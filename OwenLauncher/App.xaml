@@ -1,0 +1,9 @@
+﻿<Application x:Class="OwenLauncher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:OwenLauncher"
+             xmlns:res="clr-namespace:OwenLauncher.Properties">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
