@@ -22,12 +22,19 @@ namespace OwenLauncher.Applications
                 image = Resources.Default;
             }
 
-            var installService = GetInstallService(configuration.InstallServiceType);
+            var installService = GetInstallService(configuration.InstallServiceType, configuration.UpdateUrl);
+            var versionChecker = GetVersionCheckService(configuration.InstallServiceType, configuration.UpdateUrl);
 
-            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.UpdateUrl, configuration.HistoryUrl, installService);
+            return new ApplicationModel(
+                configuration.UserName, 
+                configuration.InstallId, 
+                image,
+                configuration.HistoryUrl, 
+                installService,
+                versionChecker);
         }
 
-        private static IInstallApplicationService GetInstallService(string serviceName)
+        private static IInstallApplicationService GetInstallService(string serviceName, string updateUrl)
         {
             if (string.IsNullOrWhiteSpace(serviceName))
                 return null;
@@ -35,7 +42,21 @@ namespace OwenLauncher.Applications
             switch(serviceName.ToLower())
             {
                 case "installfromftp": 
-                    return new InstallFromFtp();
+                    return new InstallFromFtpService(updateUrl);
+                default:
+                    return null;
+            }
+        }
+
+        private static IVersionCheckerService GetVersionCheckService(string serviceName, string updateUrl)
+        {
+            if (string.IsNullOrWhiteSpace(serviceName))
+                return null;
+
+            switch(serviceName.ToLower())
+            {
+                case "installfromftp": 
+                    return new FtpVersionCheckerService(updateUrl);
                 default:
                     return null;
             }

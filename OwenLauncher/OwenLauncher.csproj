@@ -69,7 +69,10 @@
     </ApplicationDefinition>
     <Compile Include="Applications\ApplicationConfiguration.cs" />
     <Compile Include="Applications\ApplicationModelFactory.cs" />
-    <Compile Include="Applications\InstallFromFtp.cs" />
+    <Compile Include="Applications\FtpVersionCheckerService.cs" />
+    <Compile Include="Applications\InstallFromFtpService.cs" />
+    <Compile Include="Applications\IVersionCheckerService.cs" />
+    <Compile Include="Extensions\HyperlinkExtensions.cs" />
     <Compile Include="IInstalledApplicationsService.cs" />
     <Compile Include="Applications\IInstallApplicationService.cs" />
     <Compile Include="RegistryInstalledApplicationsService.cs" />
@@ -87,7 +90,7 @@
     </Compile>
     <Compile Include="Applications\ApplicationModel.cs" />
     <Compile Include="Applications\ApplicationViewModel.cs" />
-    <Compile Include="IconUtilities.cs" />
+    <Compile Include="Extensions\IconUtilities.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
