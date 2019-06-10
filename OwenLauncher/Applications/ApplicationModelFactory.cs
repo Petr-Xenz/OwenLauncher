@@ -22,7 +22,23 @@ namespace OwenLauncher.Applications
                 image = Resources.Default;
             }
 
-            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.UpdateUrl, configuration.HistoryUrl);
+            var installService = GetInstallService(configuration.InstallServiceType);
+
+            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.UpdateUrl, configuration.HistoryUrl, installService);
+        }
+
+        private static IInstallApplicationService GetInstallService(string serviceName)
+        {
+            if (string.IsNullOrWhiteSpace(serviceName))
+                return null;
+
+            switch(serviceName.ToLower())
+            {
+                case "installfromftp": 
+                    return new InstallFromFtp();
+                default:
+                    return null;
+            }
         }
     }
 }

@@ -15,8 +15,10 @@
     </Window.Resources>
 
     <Grid>
-        <ItemsControl  
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl  
             ItemsSource="{Binding LocatedApplications}">
-        </ItemsControl>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>OwenLauncher.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Mvvm, Version=18.2.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.18.2.3\lib\net452\DevExpress.Mvvm.dll</HintPath>
@@ -66,7 +69,9 @@
     </ApplicationDefinition>
     <Compile Include="Applications\ApplicationConfiguration.cs" />
     <Compile Include="Applications\ApplicationModelFactory.cs" />
+    <Compile Include="Applications\InstallFromFtp.cs" />
     <Compile Include="IInstalledApplicationsService.cs" />
+    <Compile Include="Applications\IInstallApplicationService.cs" />
     <Compile Include="RegistryInstalledApplicationsService.cs" />
     <Page Include="Applications\ApplicationView.xaml">
       <SubType>Designer</SubType>
@@ -107,6 +112,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -118,12 +124,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ConfigAssociated.ico" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="OwenLauncher.ico" />
     <EmbeddedResource Include="Applications\Configurations\Configurer.xml" />
     <EmbeddedResource Include="Applications\Configurations\OPC.xml" />
     <EmbeddedResource Include="Applications\Configurations\OwenLogic.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm101.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm151.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerMSD200.xml" />
     <Content Include="Images\Config.png" />
   </ItemGroup>
   <ItemGroup>

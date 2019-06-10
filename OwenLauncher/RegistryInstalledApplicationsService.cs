@@ -27,7 +27,7 @@ namespace OwenLauncher
                 }
                 else
                 {
-                    model.UpdateInstallInfo(installStatus[NamePath], installStatus[UninstallPath], installStatus[VersionPath]);
+                    model.UpdateInstallInfo(installStatus[ExecutablePath], installStatus[UninstallPath], installStatus[VersionPath]);
                 }
             }
             catch (Exception)

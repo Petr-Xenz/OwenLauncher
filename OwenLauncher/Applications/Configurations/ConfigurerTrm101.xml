@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UserName>Owen Configurator</UserName>
-  <InstallId>{0C03E123-6035-4EEE-8F65-20BF0FA76B7D}_is1</InstallId>
-  <ImageResourceName>Config</ImageResourceName>
+  <UserName>Конфигуратор ТРМ2xx</UserName>
+  <InstallId>Конфигуратор TPM101 TPM2xx_is1</InstallId>
+  <ImageResourceName>TRM2xx</ImageResourceName>
   <UpdateUrl>http://ftp-ow.owen.ru/UniversalConfigurer/Updates/NewRelease/</UpdateUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/UniversalConfigurer/Updates/FullUpdateHistory.html</HistoryUrl>
-  <InstallServiceType>InstallFromFtp</InstallServiceType>
 </ApplicationConfiguration>

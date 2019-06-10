@@ -60,7 +60,7 @@ namespace OwenLauncher
             }
             catch (Exception)
             {
-                return Resources.ConfigAssociated;
+                return Resources.OwenLauncher;
             }
         }
     }

@@ -71,16 +71,6 @@ namespace OwenLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon ConfigAssociated {
-            get {
-                object obj = ResourceManager.GetObject("ConfigAssociated", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Default {
@@ -96,6 +86,15 @@ namespace OwenLauncher.Properties {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Установить.
+        /// </summary>
+        public static string Install {
+            get {
+                return ResourceManager.GetString("Install", resourceCulture);
             }
         }
         
@@ -125,6 +124,16 @@ namespace OwenLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("OPC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon OwenLauncher {
+            get {
+                object obj = ResourceManager.GetObject("OwenLauncher", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

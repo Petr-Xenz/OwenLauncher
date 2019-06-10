@@ -121,14 +121,14 @@
   <data name="Config" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ConfigAssociated" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\configassociated.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Установить</value>
   </data>
   <data name="Launch" xml:space="preserve">
     <value>Запустить</value>
@@ -138,6 +138,9 @@
   </data>
   <data name="OPC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\OPC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OwenLauncher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\owenlauncher.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Owen Launcher</value>

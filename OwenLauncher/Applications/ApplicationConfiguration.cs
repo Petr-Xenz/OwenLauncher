@@ -19,5 +19,7 @@ namespace OwenLauncher.Applications
 
         public string HistoryUrl { get; set; }
 
+        public string InstallServiceType { get; set; }
+
     }
 }
