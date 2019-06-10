@@ -64,9 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IApplicationSearcher.cs" />
-    <Compile Include="RegistryApplicationSearcher.cs" />
-    <Page Include="ApplicationView.xaml">
+    <Compile Include="Applications\ApplicationConfiguration.cs" />
+    <Compile Include="Applications\ApplicationModelFactory.cs" />
+    <Compile Include="IInstalledApplicationsService.cs" />
+    <Compile Include="RegistryInstalledApplicationsService.cs" />
+    <Page Include="Applications\ApplicationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -78,8 +80,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ApplicationModel.cs" />
-    <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="Applications\ApplicationModel.cs" />
+    <Compile Include="Applications\ApplicationViewModel.cs" />
     <Compile Include="IconUtilities.cs" />
     <Compile Include="MainModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -118,5 +120,21 @@
   <ItemGroup>
     <Resource Include="ConfigAssociated.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Applications\Configurations\Configurer.xml" />
+    <EmbeddedResource Include="Applications\Configurations\OPC.xml" />
+    <EmbeddedResource Include="Applications\Configurations\OwenLogic.xml" />
+    <Content Include="Images\Config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Logic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\OPC.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

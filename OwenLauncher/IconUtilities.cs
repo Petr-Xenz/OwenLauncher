@@ -34,6 +34,24 @@ namespace OwenLauncher
             return wpfBitmap;
         }
 
+        public static ImageSource ToImageSource(this Bitmap image)
+        {
+            var hBitmap = image.GetHbitmap();
+
+            var wpfBitmap = Imaging.CreateBitmapSourceFromHBitmap(
+                hBitmap,
+                IntPtr.Zero,
+                Int32Rect.Empty,
+                BitmapSizeOptions.FromEmptyOptions());
+
+            if (!DeleteObject(hBitmap))
+            {
+                throw new Win32Exception();
+            }
+
+            return wpfBitmap;
+        }
+
         public static Icon IconFromFilePath(string filePath)
         {
             try

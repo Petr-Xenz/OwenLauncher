@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <UserName>Owen Logic</UserName>
+  <InstallId>OWEN Logic_is1</InstallId>
+  <ImageResourceName>Logic</ImageResourceName>
+  <UpdateUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/NewRelease/</UpdateUrl>
+  <HistoryUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/infoOfVersion.html</HistoryUrl>
+</ApplicationConfiguration>

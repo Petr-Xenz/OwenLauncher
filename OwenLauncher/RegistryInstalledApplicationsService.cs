@@ -4,44 +4,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using Microsoft.Win32;
+using OwenLauncher.Applications;
 
 namespace OwenLauncher
 {
-    //Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\OWEN Logic_is1
-    //Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{0C03E123-6035-4EEE-8F65-20BF0FA76B7D}_is1
-    public class RegistryApplicationSearcher : IApplicationSearcher
+    public class RegistryInstalledApplicationsService : IInstalledApplicationsService
     {
-
-        private const string ConfigurerRegistryPath =
-            @"{0C03E123-6035-4EEE-8F65-20BF0FA76B7D}_is1";
-
-        private const string OlRegistryPath =
-            @"OWEN Logic_is1";
-
-        private const string OpcRegistryPath =
-            @"{87B1AABA-D679-40F4-AD6E-1B1451F41F7F}_is1";
 
         private const string ExecutablePath = "DisplayIcon";
         private const string NamePath = "DisplayName";
         private const string VersionPath = "DisplayVersion";
-        private const string UninstallPath = "QuietUninstallString";
+        private const string UninstallPath = "UninstallString";
 
-        public IEnumerable<ApplicationModel> FindApplications()
+        public void UpdateInstallStatus(ApplicationModel model)
         {
-            var applicationsRegistryPath = new List<string>
+            try
             {
-                ConfigurerRegistryPath,
-                OlRegistryPath,
-                OpcRegistryPath
-            };
-            var reg = GetApplicationInstallPath(ConfigurerRegistryPath);
-            return applicationsRegistryPath
-                .Select(GetApplicationInstallPath)
-                .Select(CreateModelFromRegistryData)
-                .Where(m => m != null);
+                var installStatus = GetApplicationInstallPath(model.InstallId);
+                if (!installStatus.Any())
+                {
+                    model.UpdateInstallInfo("", "", "");
+                }
+                else
+                {
+                    model.UpdateInstallInfo(installStatus[NamePath], installStatus[UninstallPath], installStatus[VersionPath]);
+                }
+            }
+            catch (Exception)
+            {
+                model.UpdateInstallInfo("", "", "");
+            }
         }
 
-        public static Dictionary<string, string> GetApplicationInstallPath(string nameOfAppToFind)
+        private static Dictionary<string, string> GetApplicationInstallPath(string nameOfAppToFind)
         {
             var attributes = new List<string>
             {
@@ -97,19 +92,11 @@ namespace OwenLauncher
                         foreach (var attribute in attributes)
                         {
                             result[attribute] = subkey.GetValue(attribute, string.Empty).ToString();
-                        } 
+                        }
                     }
                 }
             }
             return result;
-        }
-
-        private ApplicationModel CreateModelFromRegistryData(Dictionary<string, string> regData)
-        {
-            if (!regData.Any())
-                return null;
-
-            return new ApplicationModel(regData[NamePath], regData[VersionPath], regData[ExecutablePath], regData[ExecutablePath]);
         }
     }
 }

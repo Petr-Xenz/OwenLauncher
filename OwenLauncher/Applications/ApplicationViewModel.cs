@@ -4,7 +4,7 @@ using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
 
-namespace OwenLauncher
+namespace OwenLauncher.Applications
 {
     [POCOViewModel]
     public class ApplicationViewModel
@@ -20,9 +20,9 @@ namespace OwenLauncher
         protected ApplicationViewModel(ApplicationModel model)
         {
             _model = model;
-            Image = IconUtilities.IconFromFilePath(model.ExecutablePath).ToImageSource();
-            LaunchApp = new DelegateCommand(_model.StartApp);
-            DeleteApp = new DelegateCommand(_model.DeleteApp);
+            Image = model.Icon.ToImageSource();
+            LaunchApp = new DelegateCommand(_model.StartApp, () => _model.IsInstalled);
+            DeleteApp = new DelegateCommand(_model.DeleteApp, () => _model.IsInstalled);
         }
 
         public static ApplicationViewModel Create(ApplicationModel model)

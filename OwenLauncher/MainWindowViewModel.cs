@@ -2,6 +2,7 @@
 using System.Linq;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
+using OwenLauncher.Applications;
 
 namespace OwenLauncher
 {
