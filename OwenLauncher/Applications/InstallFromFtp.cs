@@ -8,20 +8,13 @@ using System.Threading.Tasks;
 
 namespace OwenLauncher.Applications
 {
-    internal class InstallFromFtpService : IInstallApplicationService
+    internal class InstallFromFtp : IInstallApplicationService
     {
-        private readonly string _installerUrl;
-
-        public InstallFromFtpService(string installerUrl)
-        {
-            _installerUrl = installerUrl ?? throw new ArgumentNullException(nameof(installerUrl));
-        }
-
-        public async Task<bool> InstallApplication(string arguments = "")
+        public async Task<bool> InstallApplication(string installerUrl, string arguments = "")
         {
             try
             {
-                var installerData = await GetFromFtp(_installerUrl);
+                var installerData = await GetFromFtp(installerUrl);
                 if (installerData.Length == 0)
                     return false;
 

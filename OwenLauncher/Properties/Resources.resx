@@ -136,9 +136,6 @@
   <data name="Logic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\Logic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="NewVersionAvailable" xml:space="preserve">
-    <value>Доступна новая версия:</value>
-  </data>
   <data name="OPC" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\OPC.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,11 +144,5 @@
   </data>
   <data name="Title" xml:space="preserve">
     <value>Owen Launcher</value>
-  </data>
-  <data name="Update" xml:space="preserve">
-    <value>Обновить</value>
-  </data>
-  <data name="UpdateInfo" xml:space="preserve">
-    <value>Список изменений</value>
   </data>
 </root>

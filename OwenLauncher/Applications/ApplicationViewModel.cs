@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Windows.Media;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
@@ -16,54 +14,21 @@ namespace OwenLauncher.Applications
         public string Version => _model.Version;
         public string Name => _model.Name;
 
-        public ICommand LaunchAppCommand { get; }
-        public ICommand DeleteAppCommand { get; }
-        public ICommand InstallAppCommand { get; }
-        public ICommand UpdateAppCommand { get; }
+        public ICommand LaunchApp { get; }
+        public ICommand DeleteApp { get; }
+        public ICommand InstallApp { get; }
 
-        public bool IsCanUpdate { get; private set; }
-
-        public string LastVersion { get; private set; }
-
-        public string UpdateInfoUri => _model.HistoryUrl;
+        public bool IsInstalled => _model.IsInstalled;
 
         protected ApplicationViewModel(ApplicationModel model)
         {
             _model = model;
             _model.PropertyChanged += (s, e) => this.RaisePropertiesChanged();
             Image = model.Icon.ToImageSource();
-            LaunchAppCommand = new DelegateCommand(_model.StartApp, () => _model.IsInstalled);
-            DeleteAppCommand = new DelegateCommand(_model.DeleteApp, () => _model.IsInstalled);
-            InstallAppCommand = new AsyncCommand(_model.InstallApplication, () => _model.CanInstallApp);
-            UpdateAppCommand = new AsyncCommand(UpdateApp, () => _model.CanInstallApp && IsCanUpdate);
-            if (_model.IsInstalled)
-            {
-                Task.Run(model.IsLastVersion)
-                    .ContinueWith((t) =>
-                    {
-                        IsCanUpdate = !t.Result.isLast;
-                        LastVersion = t.Result.lastVersion;
-                        this.RaisePropertiesChanged();
-                    }, TaskContinuationOptions.OnlyOnRanToCompletion);
-            }
-
+            LaunchApp = new DelegateCommand(_model.StartApp, () => _model.IsInstalled);
+            DeleteApp = new DelegateCommand(_model.DeleteApp, () => _model.IsInstalled);
+            InstallApp = new AsyncCommand(_model.InstallApplication, () => _model.CanInstallApp);
         }
-
-        private async Task UpdateApp()
-        {
-            try
-            {
-                IsCanUpdate = false;
-                await _model.InstallApplication();
-                
-            }
-            catch (Exception)
-            {
-                IsCanUpdate = true;
-            }
-
-        }
-
 
         public static ApplicationViewModel Create(ApplicationModel model)
         {

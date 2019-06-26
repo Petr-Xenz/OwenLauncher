@@ -11,18 +11,17 @@ namespace OwenLauncher.Applications
     {
         private bool _isInstalled;
         private readonly IInstallApplicationService _installService;
-        private readonly IVersionCheckerService _versionChecker;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ApplicationModel(string name, string installId, Bitmap icon, string historyUrl, IInstallApplicationService installService, IVersionCheckerService versionChecker)
+        public ApplicationModel(string name, string installId, Bitmap icon, string updateUrl, string historyUrl, IInstallApplicationService installService)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             InstallId = installId ?? throw new ArgumentNullException(nameof(installId));
             Icon = icon ?? throw new ArgumentNullException(nameof(icon));
+            UpdateUrl = updateUrl ?? throw new ArgumentNullException(nameof(updateUrl));
             HistoryUrl = historyUrl ?? throw new ArgumentNullException(nameof(historyUrl));
             _installService = installService;
-            _versionChecker = versionChecker;
         }
 
         public string Name { get; }
@@ -49,6 +48,7 @@ namespace OwenLauncher.Applications
         private void RaiseNotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public Bitmap Icon { get; }
+        public string UpdateUrl { get; }
         public string HistoryUrl { get; }
 
         public void UpdateInstallInfo(string executablePath, string uninstallCommand, string version)
@@ -65,21 +65,13 @@ namespace OwenLauncher.Applications
             if (_installService is null)
                 throw new ArgumentException(nameof(_installService));
 
-            var isInstalled = await _installService.InstallApplication("/VERYSILENT /SUPPRESSMSGBOXES");
+            var isInstalled = await _installService.InstallApplication(UpdateUrl, "/VERYSILENT /SUPPRESSMSGBOXES");
 
             if (isInstalled) //TODO
             {
                 var serv = new RegistryInstalledApplicationsService();
                 serv.UpdateInstallStatus(this);
             }
-        }
-
-        public async Task<(bool isLast, string lastVersion)> IsLastVersion()
-        {
-            if (_versionChecker is null)
-                return (true, Version);
-
-            return await _versionChecker.IsLastVersion(System.Version.Parse(Version));
         }
 
         public void StartApp()
