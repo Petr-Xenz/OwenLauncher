@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UserName>Конфигуратор ТРМ151</UserName>
-  <InstallId>Конфигуратор ТРМ151_is1</InstallId>
+  <UserName>Конфигуратор EasyGo TPM148</UserName>
+  <InstallId>{995EFD71-FDA5-44DB-9DA4-31F1A6C4C777}_is1</InstallId>
   <ImageResourceName>Default</ImageResourceName>
-  <InstallUrl>https://owen.ru/uploads/21/tpm151_setup.zip</InstallUrl>
+  <InstallUrl>https://owen.ru/uploads/21/konf_easygotpm148.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>
 </ApplicationConfiguration>

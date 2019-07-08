@@ -3,6 +3,6 @@
   <UserName>Конфигуратор МСД-200</UserName>
   <InstallId>{995EFD71-FDA5-44DB-9DA4-31F1A6C4C777}_is1</InstallId>
   <ImageResourceName>Default</ImageResourceName>
-  <InstallUrl>uploads/20/setup_tpm101_tpm2xx_3.0.5.zip</InstallUrl>
+  <InstallUrl>https://owen.ru/uploads/22/setup_mcd200_1.0.89.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>
 </ApplicationConfiguration>

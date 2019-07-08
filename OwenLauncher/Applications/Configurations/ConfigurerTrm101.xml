@@ -3,6 +3,6 @@
   <UserName>Конфигуратор ТРМ2xx</UserName>
   <InstallId>Конфигуратор TPM101 TPM2xx_is1</InstallId>
   <ImageResourceName>TRM2xx</ImageResourceName>
-  <InstallUrl>uploads/20/setup_tpm101_tpm2xx_3.0.5.zip</InstallUrl>
+  <InstallUrl>https://owen.ru/uploads/20/setup_tpm101_tpm2xx_3.0.5.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>
 </ApplicationConfiguration>

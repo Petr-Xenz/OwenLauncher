@@ -21,7 +21,6 @@ namespace OwenLauncher.Applications
             try
             {
                 var client = new HttpClient();
-                client.BaseAddress = new Uri("https://www.owen.ru");
                 var data = await client.GetAsync(installerUrl);
                 if (!data.IsSuccessStatusCode)
                 {

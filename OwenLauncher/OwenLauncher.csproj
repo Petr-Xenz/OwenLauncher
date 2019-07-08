@@ -133,6 +133,9 @@
     <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm101.xml" />
     <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm151.xml" />
     <EmbeddedResource Include="Applications\Configurations\ConfigurerMSD200.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm148.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerTrm138.xml" />
+    <EmbeddedResource Include="Applications\Configurations\ConfigurerEasyGoTPM148.xml" />
     <Content Include="Images\Config.png" />
   </ItemGroup>
   <ItemGroup>
