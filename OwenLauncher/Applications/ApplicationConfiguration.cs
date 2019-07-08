@@ -15,7 +15,7 @@ namespace OwenLauncher.Applications
 
         public string ImageResourceName { get; set; }
 
-        public string UpdateUrl { get; set; }
+        public string InstallUrl { get; set; }
 
         public string HistoryUrl { get; set; }
 

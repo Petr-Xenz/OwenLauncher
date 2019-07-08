@@ -3,7 +3,7 @@
   <UserName>Owen OPC Server</UserName>
   <InstallId>{87B1AABA-D679-40F4-AD6E-1B1451F41F7F}_is1</InstallId>
   <ImageResourceName>OPC</ImageResourceName>
-  <UpdateUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/NewRelease/</UpdateUrl>
+  <InstallUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/NewRelease/</InstallUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/FullUpdateHistory.html</HistoryUrl>
-  <InstallServiceType>InstallFromFtp</InstallServiceType>  
+  <InstallServiceType>InstallFromFtp</InstallServiceType>
 </ApplicationConfiguration>

@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -70,6 +71,7 @@
     <Compile Include="Applications\ApplicationConfiguration.cs" />
     <Compile Include="Applications\ApplicationModelFactory.cs" />
     <Compile Include="Applications\InstallFromFtp.cs" />
+    <Compile Include="Applications\InstallFromSite.cs" />
     <Compile Include="IInstalledApplicationsService.cs" />
     <Compile Include="Applications\IInstallApplicationService.cs" />
     <Compile Include="RegistryInstalledApplicationsService.cs" />

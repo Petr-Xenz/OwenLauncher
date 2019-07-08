@@ -3,6 +3,6 @@
   <UserName>Конфигуратор ТРМ151</UserName>
   <InstallId>Конфигуратор ТРМ151_is1</InstallId>
   <ImageResourceName>Default</ImageResourceName>
-  <UpdateUrl>http://ftp-ow.owen.ru/UniversalConfigurer/Updates/NewRelease/</UpdateUrl>
-  <HistoryUrl>http://ftp-ow.owen.ru/UniversalConfigurer/Updates/FullUpdateHistory.html</HistoryUrl>
+  <InstallUrl>uploads/20/setup_tpm101_tpm2xx_3.0.5.zip</InstallUrl>
+  <InstallServiceType>InstallFromSite</InstallServiceType>
 </ApplicationConfiguration>

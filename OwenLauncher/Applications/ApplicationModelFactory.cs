@@ -24,7 +24,7 @@ namespace OwenLauncher.Applications
 
             var installService = GetInstallService(configuration.InstallServiceType);
 
-            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.UpdateUrl, configuration.HistoryUrl, installService);
+            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.InstallUrl, configuration.HistoryUrl ?? "", installService);
         }
 
         private static IInstallApplicationService GetInstallService(string serviceName)
@@ -34,8 +34,10 @@ namespace OwenLauncher.Applications
 
             switch(serviceName.ToLower())
             {
-                case "installfromftp": 
+                case "installfromftp":
                     return new InstallFromFtp();
+                case "installfromsite":
+                    return new InstallFromSite();
                 default:
                     return null;
             }

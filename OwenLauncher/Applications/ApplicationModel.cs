@@ -14,12 +14,12 @@ namespace OwenLauncher.Applications
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ApplicationModel(string name, string installId, Bitmap icon, string updateUrl, string historyUrl, IInstallApplicationService installService)
+        public ApplicationModel(string name, string installId, Bitmap icon, string installUrl, string historyUrl, IInstallApplicationService installService)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             InstallId = installId ?? throw new ArgumentNullException(nameof(installId));
             Icon = icon ?? throw new ArgumentNullException(nameof(icon));
-            UpdateUrl = updateUrl ?? throw new ArgumentNullException(nameof(updateUrl));
+            InstallUrl = installUrl ?? throw new ArgumentNullException(nameof(installUrl));
             HistoryUrl = historyUrl ?? throw new ArgumentNullException(nameof(historyUrl));
             _installService = installService;
         }
@@ -48,7 +48,7 @@ namespace OwenLauncher.Applications
         private void RaiseNotifyPropertyChanged(string name) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public Bitmap Icon { get; }
-        public string UpdateUrl { get; }
+        public string InstallUrl { get; }
         public string HistoryUrl { get; }
 
         public void UpdateInstallInfo(string executablePath, string uninstallCommand, string version)
@@ -65,7 +65,7 @@ namespace OwenLauncher.Applications
             if (_installService is null)
                 throw new ArgumentException(nameof(_installService));
 
-            var isInstalled = await _installService.InstallApplication(UpdateUrl, "/VERYSILENT /SUPPRESSMSGBOXES");
+            var isInstalled = await _installService.InstallApplicationAsync(InstallUrl, "/VERYSILENT /SUPPRESSMSGBOXES");
 
             if (isInstalled) //TODO
             {

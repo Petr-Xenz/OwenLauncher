@@ -10,7 +10,7 @@ namespace OwenLauncher.Applications
 {
     internal class InstallFromFtp : IInstallApplicationService
     {
-        public async Task<bool> InstallApplication(string installerUrl, string arguments = "")
+        public async Task<bool> InstallApplicationAsync(string installerUrl, string arguments = "")
         {
             try
             {

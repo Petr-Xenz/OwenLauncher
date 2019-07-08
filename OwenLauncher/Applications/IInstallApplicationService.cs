@@ -7,6 +7,6 @@ namespace OwenLauncher.Applications
 {
     public interface IInstallApplicationService
     {
-        Task<bool> InstallApplication(string installerUrl, string arguments = "");
+        Task<bool> InstallApplicationAsync(string installerUrl, string arguments = "");
     }
 }
