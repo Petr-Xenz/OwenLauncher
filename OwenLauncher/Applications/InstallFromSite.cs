@@ -30,7 +30,7 @@ namespace OwenLauncher.Applications
                 var fileData = await data.Content.ReadAsByteArrayAsync();
                 File.WriteAllBytes(extractFile, fileData);
                 ZipFile.ExtractToDirectory(extractFile, extractFolder);
-                var installer = Directory.GetFiles(extractFolder, "*.exe").FirstOrDefault();
+                var installer = Directory.GetFiles(extractFolder, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
                 if (installer != null)
                 {
                     using (var p = new Process { StartInfo = new ProcessStartInfo(installer, "/VERYSILENT /SUPPRESSMSGBOXES") })
