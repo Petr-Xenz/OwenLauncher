@@ -14,10 +14,10 @@ namespace OwenLauncher.Applications
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ApplicationModel(string name, string installId, Bitmap icon, string installUrl, string historyUrl, IInstallApplicationService installService)
+        public ApplicationModel(string name, InstallData installData, Bitmap icon, string installUrl, string historyUrl, IInstallApplicationService installService)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
-            InstallId = installId ?? throw new ArgumentNullException(nameof(installId));
+            InstallData = installData ?? throw new ArgumentNullException(nameof(installData));
             Icon = icon ?? throw new ArgumentNullException(nameof(icon));
             InstallUrl = installUrl ?? throw new ArgumentNullException(nameof(installUrl));
             HistoryUrl = historyUrl ?? throw new ArgumentNullException(nameof(historyUrl));
@@ -25,7 +25,7 @@ namespace OwenLauncher.Applications
         }
 
         public string Name { get; }
-        public string InstallId { get; }
+        public InstallData InstallData { get; }
         public string Version { get; private set; }
 
         public string ExecutablePath { get; private set; }
@@ -65,7 +65,7 @@ namespace OwenLauncher.Applications
             if (_installService is null)
                 throw new ArgumentException(nameof(_installService));
 
-            var isInstalled = await _installService.InstallApplicationAsync(InstallUrl, "/VERYSILENT /SUPPRESSMSGBOXES");
+            var isInstalled = await _installService.InstallApplicationAsync(InstallUrl, InstallData.SilentInstall);
 
             if (isInstalled) //TODO
             {

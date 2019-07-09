@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UserName>Конфигуратор ТРМ151</UserName>
-  <InstallId>Конфигуратор ТРМ151_is1</InstallId>
+  <UserName>Конфигуратор ТРМ151</UserName>  
+  <InstallData>
+    <InstallId>Конфигуратор ТРМ151_is1</InstallId>
+    <MainExe>TPM151.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Default</ImageResourceName>
   <InstallUrl>https://owen.ru/uploads/21/tpm151_setup.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>

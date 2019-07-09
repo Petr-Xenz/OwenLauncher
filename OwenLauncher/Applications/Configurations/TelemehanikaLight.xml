@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UserName>ОВЕН "Телемеханика Лайт"</UserName>
-  <InstallId>{2D8614AE-3DE2-1234-5678-05B3E76C557F}_is1</InstallId>
+  <UserName>ОВЕН "Телемеханика Лайт"</UserName>  
+  <InstallData>
+    <InstallId>{2D8614AE-3DE2-1234-5678-05B3E76C557F}_is1</InstallId>
+    <MainExe>bin\OwenTMlite.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Default</ImageResourceName>
   <InstallUrl>
     https://www.owen.ru/upl/PO/telemexanika_lait/OWEN_TML_setup_%20v_1.1.8.zip

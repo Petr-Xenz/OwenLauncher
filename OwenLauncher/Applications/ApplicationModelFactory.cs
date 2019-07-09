@@ -24,7 +24,7 @@ namespace OwenLauncher.Applications
 
             var installService = GetInstallService(configuration.InstallServiceType);
 
-            return new ApplicationModel(configuration.UserName, configuration.InstallId, image, configuration.InstallUrl, configuration.HistoryUrl ?? "", installService);
+            return new ApplicationModel(configuration.UserName, configuration.InstallData, image, configuration.InstallUrl, configuration.HistoryUrl ?? "", installService);
         }
 
         private static IInstallApplicationService GetInstallService(string serviceName)

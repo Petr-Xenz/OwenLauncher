@@ -70,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Applications\ApplicationConfiguration.cs" />
     <Compile Include="Applications\ApplicationModelFactory.cs" />
+    <Compile Include="Applications\InstallData.cs" />
     <Compile Include="Applications\InstallFromFtp.cs" />
     <Compile Include="Applications\InstallFromSite.cs" />
     <Compile Include="IInstalledApplicationsService.cs" />

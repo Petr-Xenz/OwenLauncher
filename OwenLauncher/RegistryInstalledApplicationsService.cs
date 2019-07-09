@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using Microsoft.Win32;
@@ -11,7 +12,7 @@ namespace OwenLauncher
     public class RegistryInstalledApplicationsService : IInstalledApplicationsService
     {
 
-        private const string ExecutablePath = "DisplayIcon";
+        private const string ExecutablePath = "InstallLocation";
         private const string NamePath = "DisplayName";
         private const string VersionPath = "DisplayVersion";
         private const string UninstallPath = "UninstallString";
@@ -20,14 +21,15 @@ namespace OwenLauncher
         {
             try
             {
-                var installStatus = GetApplicationInstallPath(model.InstallId);
+                var installStatus = GetApplicationInstallPath(model.InstallData.InstallId);
                 if (!installStatus.Any())
                 {
                     model.UpdateInstallInfo("", "", "");
                 }
                 else
                 {
-                    model.UpdateInstallInfo(installStatus[ExecutablePath], installStatus[UninstallPath], installStatus[VersionPath]);
+                    var installPath = Path.Combine(installStatus[ExecutablePath], model.InstallData.MainExe);
+                    model.UpdateInstallInfo(installPath, installStatus[UninstallPath], installStatus[VersionPath]);
                 }
             }
             catch (Exception)

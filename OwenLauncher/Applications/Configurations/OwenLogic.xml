@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <UserName>Owen Logic</UserName>
-  <InstallId>OWEN Logic_is1</InstallId>
+  <InstallData>
+    <InstallId>OWEN Logic_is1</InstallId>
+    <MainExe>ProgramRelayFBD.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Logic</ImageResourceName>
   <InstallUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/NewRelease/</InstallUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/infoOfVersion.html</HistoryUrl>

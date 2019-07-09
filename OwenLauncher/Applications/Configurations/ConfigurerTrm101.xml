@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <UserName>Конфигуратор ТРМ2xx</UserName>
-  <InstallId>Конфигуратор TPM101 TPM2xx_is1</InstallId>
+  <InstallData>
+    <InstallId>Конфигуратор TPM101 TPM2xx_is1</InstallId>
+    <MainExe>TPM2xx.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>TRM2xx</ImageResourceName>
   <InstallUrl>https://owen.ru/uploads/20/setup_tpm101_tpm2xx_3.0.5.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>

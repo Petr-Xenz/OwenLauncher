@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <UserName>Owen OPC Server</UserName>
-  <InstallId>{87B1AABA-D679-40F4-AD6E-1B1451F41F7F}_is1</InstallId>
+  <InstallData>
+    <InstallId>{87B1AABA-D679-40F4-AD6E-1B1451F41F7F}_is1</InstallId>
+    <MainExe>Opcnet.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>OPC</ImageResourceName>
   <InstallUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/NewRelease/</InstallUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/FullUpdateHistory.html</HistoryUrl>

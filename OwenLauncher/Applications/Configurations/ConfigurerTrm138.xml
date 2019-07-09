@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <UserName>Конфигуратор ТРМ136, 138</UserName>
-  <InstallId>Конфигуратор ТРМ136 ТРМ138 ТРМ138В_is1</InstallId>
+  <InstallData>
+    <InstallId>Конфигуратор ТРМ136 ТРМ138 ТРМ138В_is1</InstallId>
+    <MainExe>TPM138.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Default</ImageResourceName>
   <InstallUrl>https://owen.ru/uploads/20/trm136_138_konfigurator_1.1.3.18.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>

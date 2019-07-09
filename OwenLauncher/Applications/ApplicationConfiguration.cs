@@ -11,7 +11,7 @@ namespace OwenLauncher.Applications
     {
         public string UserName { get; set; }
 
-        public string InstallId { get; set; }
+        public InstallData InstallData { get; set; }
 
         public string ImageResourceName { get; set; }
 

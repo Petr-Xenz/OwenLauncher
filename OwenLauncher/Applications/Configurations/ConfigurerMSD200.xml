@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <UserName>Конфигуратор МСД-200</UserName>
-  <InstallId>{995EFD71-FDA5-44DB-9DA4-31F1A6C4C777}_is1</InstallId>
+  <InstallData>
+    <InstallId>{995EFD71-FDA5-44DB-9DA4-31F1A6C4C777}_is1</InstallId>
+    <MainExe>MSD200.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Default</ImageResourceName>
   <InstallUrl>https://owen.ru/uploads/22/setup_mcd200_1.0.89.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>

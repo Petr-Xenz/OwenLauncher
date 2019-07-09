@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <UserName>Конфигуратор ТРМ148</UserName>
-  <InstallId>Конфигуратор ТРМ148_is1</InstallId>
+  <UserName>Конфигуратор ТРМ148</UserName>  
+  <InstallData>
+    <InstallId>Конфигуратор ТРМ148_is1</InstallId>
+    <MainExe>TPM148.exe</MainExe>
+    <SilentInstall>/VERYSILENT /SUPPRESSMSGBOXES</SilentInstall>
+  </InstallData>
   <ImageResourceName>Default</ImageResourceName>
   <InstallUrl>https://owen.ru/uploads/21/tpm148_v1025.zip</InstallUrl>
   <InstallServiceType>InstallFromSite</InstallServiceType>

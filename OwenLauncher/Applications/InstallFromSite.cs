@@ -33,7 +33,7 @@ namespace OwenLauncher.Applications
                 var installer = Directory.GetFiles(extractFolder, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
                 if (installer != null)
                 {
-                    using (var p = new Process { StartInfo = new ProcessStartInfo(installer, "/VERYSILENT /SUPPRESSMSGBOXES") })
+                    using (var p = new Process { StartInfo = new ProcessStartInfo(installer, arguments) })
                     {
                         p.Start();
                         await Task.Run(() => p.WaitForExit());
