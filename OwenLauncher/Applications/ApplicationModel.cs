@@ -3,7 +3,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace OwenLauncher.Applications
 {
@@ -72,6 +74,10 @@ namespace OwenLauncher.Applications
                 var serv = new RegistryInstalledApplicationsService();
                 serv.UpdateInstallStatus(this);
             }
+            else
+            {
+                MessageBox.Show("install error");
+            }
         }
 
         public void StartApp()
@@ -92,7 +98,14 @@ namespace OwenLauncher.Applications
 
         public void DeleteApp()
         {
-            var info = new ProcessStartInfo(UninstallCommand);
+            var command = UninstallCommand;
+            var args = "";
+            if (!command.StartsWith("\""))
+            {
+                command = command.Split(' ').First();
+                args = UninstallCommand.Split(' ').Skip(1).Aggregate((p, c) => $"{p} {c}");
+            }
+            var info = new ProcessStartInfo(command, args);
             var process = new Process();
             process.StartInfo = info;
             process.EnableRaisingEvents = true;

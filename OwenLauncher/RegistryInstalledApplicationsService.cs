@@ -29,7 +29,7 @@ namespace OwenLauncher
                 else
                 {
                     var installPath = Path.Combine(installStatus[ExecutablePath], model.InstallData.MainExe);
-                    model.UpdateInstallInfo(installPath, installStatus[UninstallPath], installStatus[VersionPath]);
+                    model.UpdateInstallInfo(installPath, GetUninstallString(installStatus), installStatus[VersionPath]);
                 }
             }
             catch (Exception)
@@ -37,6 +37,14 @@ namespace OwenLauncher
                 model.UpdateInstallInfo("", "", "");
             }
         }
+
+        private static string GetUninstallString(Dictionary<string, string> regData)
+        {
+            return regData[UninstallPath].ToLower().StartsWith("msiexec")
+                ? Path.Combine(Environment.SystemDirectory, regData[UninstallPath])
+                : regData[UninstallPath];
+        }
+
 
         private static Dictionary<string, string> GetApplicationInstallPath(string nameOfAppToFind)
         {

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<ApplicationConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <UserName>CoDeSys 3.5</UserName>  
+  <InstallData>
+    <InstallId>{3212CB86-E305-4046-B5B7-13584CA62E79}</InstallId>
+    <MainExe>CODESYS\Common\CoDeSys.exe</MainExe>
+    <SilentInstall></SilentInstall>
+  </InstallData>
+  <ImageResourceName>Default</ImageResourceName>
+  <InstallUrl>https://ftp.owen.ru/CoDeSys3/01_CODESYS/CODESYS_3.5_SP5_Patch5.zip</InstallUrl>
+  <InstallServiceType>InstallFromSite</InstallServiceType>
+</ApplicationConfiguration>

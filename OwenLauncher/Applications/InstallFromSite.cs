@@ -21,14 +21,15 @@ namespace OwenLauncher.Applications
             try
             {
                 var client = new HttpClient();
-                var data = await client.GetAsync(installerUrl);
+                var data = await client.GetAsync(installerUrl);                
                 if (!data.IsSuccessStatusCode)
                 {
                     return false;
                 }
-
-                var fileData = await data.Content.ReadAsByteArrayAsync();
-                File.WriteAllBytes(extractFile, fileData);
+                using (var file = new FileStream(extractFile, FileMode.OpenOrCreate))
+                {
+                    await data.Content.CopyToAsync(file);
+                }
                 ZipFile.ExtractToDirectory(extractFile, extractFolder);
                 var installer = Directory.GetFiles(extractFolder, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
                 if (installer != null)
