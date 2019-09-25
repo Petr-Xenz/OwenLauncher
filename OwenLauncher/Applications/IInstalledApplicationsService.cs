@@ -1,6 +1,4 @@
-﻿using OwenLauncher.Applications;
-
-namespace OwenLauncher
+﻿namespace OwenLauncher.Applications
 {
     public interface IInstalledApplicationsService
     {

@@ -13,10 +13,11 @@ namespace OwenLauncher.Applications
     {
         private bool _isInstalled;
         private readonly IInstallApplicationService _installService;
+        private readonly IUpdateApplicationService _updateService;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ApplicationModel(string name, InstallData installData, Bitmap icon, string installUrl, string historyUrl, IInstallApplicationService installService)
+        public ApplicationModel(string name, InstallData installData, Bitmap icon, string installUrl, string historyUrl, IInstallApplicationService installService, IUpdateApplicationService updateService)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
             InstallData = installData ?? throw new ArgumentNullException(nameof(installData));
@@ -24,6 +25,7 @@ namespace OwenLauncher.Applications
             InstallUrl = installUrl ?? throw new ArgumentNullException(nameof(installUrl));
             HistoryUrl = historyUrl ?? throw new ArgumentNullException(nameof(historyUrl));
             _installService = installService;
+            _updateService = updateService ?? throw new ArgumentNullException(nameof(updateService));
         }
 
         public string Name { get; }
@@ -44,6 +46,13 @@ namespace OwenLauncher.Applications
 
             }
         }
+
+        internal async Task UpdateApplication()
+        {
+            await InstallApplication();
+        }
+
+        public Version ServerVersion { get; private set; }
 
         public bool CanInstallApp => _installService != null;
 
@@ -78,6 +87,20 @@ namespace OwenLauncher.Applications
             {
                 MessageBox.Show("install error");
             }
+        }
+
+        public async Task<bool> CheckForUpdate()
+        {
+            var versionKnown = System.Version.TryParse(Version, out var parsed);
+            if (!versionKnown)
+                return false;
+
+            var updateRes = await _updateService.CanUpdateApplication(InstallUrl, parsed);
+
+            if (updateRes.canUpdate)
+                ServerVersion = updateRes.newVersion;
+
+            return updateRes.canUpdate;
         }
 
         public void StartApp()

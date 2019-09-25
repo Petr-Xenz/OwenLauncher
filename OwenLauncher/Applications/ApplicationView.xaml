@@ -13,6 +13,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -76,6 +77,31 @@
                     Visibility="{Binding Path=IsInstalled, Converter={StaticResource BoolToVis}}"
                     Content="{x:Static res:Resources.Delete}"
                     Command="{Binding DeleteApp}"/>
+
+                <TextBlock 
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Margin="3"
+                    Visibility="{Binding NeedUpdate, Converter={StaticResource BoolToVis}}">
+                    <TextBlock.Text>
+                        <MultiBinding  StringFormat="{}{0} {1}">
+                            <Binding Source="{x:Static res:Resources.NewVersionAvailable}"/>
+                            <Binding Path="ServerVersion"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+
+
+                </TextBlock>
+
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Grid.IsSharedSizeScope="True"
+                    Margin="3"
+                    Padding="3"
+                    Visibility="{Binding Path=NeedUpdate, Converter={StaticResource BoolToVis}}"
+                    Content="{x:Static res:Resources.Update}"
+                    Command="{Binding UpdateApp}"/>
 
             </Grid>
         </Border>

@@ -28,10 +28,13 @@ namespace OwenLauncher
             models.ForEach(m => installedService.UpdateInstallStatus(m));
 
             var model = new MainModel(models);
+            var viewModel = MainWindowViewModel.Create(model);
             MainWindow = new MainWindow
             {
-                DataContext = MainWindowViewModel.Create(model)
+                DataContext = viewModel
             };
+
+            Task.Run(viewModel.CheckAppsForUpdate);
 
             MainWindow.Show();
         }

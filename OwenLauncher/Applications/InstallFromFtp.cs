@@ -8,8 +8,42 @@ using System.Threading.Tasks;
 
 namespace OwenLauncher.Applications
 {
+
+    internal class FtpDownloader
+    {
+        public async Task<byte[]> GetFileDataFromFtp(Uri fileUrl)
+        {
+            using (var client = new HttpClient())
+            {
+                var dataResponse = await client.GetAsync(fileUrl);
+                if (!dataResponse.IsSuccessStatusCode)
+                {
+                    throw new InvalidOperationException(dataResponse.ReasonPhrase);
+                }
+
+                return await dataResponse.Content.ReadAsByteArrayAsync();
+            }
+        }
+
+        public async Task<string> GetFileStringFromFtp(Uri fileUrl)
+        {
+            using (var client = new HttpClient())
+            {
+                var dataResponse = await client.GetAsync(fileUrl);
+                if (!dataResponse.IsSuccessStatusCode)
+                {
+                    throw new InvalidOperationException(dataResponse.ReasonPhrase);
+                }
+
+                return await dataResponse.Content.ReadAsStringAsync();
+            }
+        }
+    }
+
     internal class InstallFromFtp : IInstallApplicationService
     {
+        private readonly FtpDownloader _downloader = new FtpDownloader();
+
         public async Task<bool> InstallApplicationAsync(string installerUrl, string arguments = "")
         {
             try
@@ -28,15 +62,8 @@ namespace OwenLauncher.Applications
 
         private async Task<byte[]> GetFromFtp(string installerUrl)
         {
-            var client = new HttpClient();
-            client.BaseAddress = new Uri(installerUrl);
-            var data = await client.GetAsync("config.cfg");
-            if (!data.IsSuccessStatusCode)
-            {
-                return new byte[0];
-            }
-
-            var updateConfig = await data.Content.ReadAsStringAsync();
+            var baseUrl = new Uri(installerUrl);
+            var updateConfig = await _downloader.GetFileStringFromFtp(new Uri(baseUrl, "config.cfg"));
 
             var matchFile = Regex.Match(updateConfig, @"File: ([^\s]+)");
             if (!matchFile.Success)
@@ -45,16 +72,8 @@ namespace OwenLauncher.Applications
             }
 
             var requestUri = matchFile.Groups[1].ToString();
-            var installerResponse = await client.GetAsync(requestUri);
+            return await _downloader.GetFileDataFromFtp(new Uri(baseUrl, requestUri));
 
-            if (installerResponse.IsSuccessStatusCode)
-            {
-                return await installerResponse.Content.ReadAsByteArrayAsync();
-            }
-            else
-            {
-                return new byte[0];
-            }
         }
 
         private async Task<bool> LaunchInstaller(byte[] installerData, string arguments)
@@ -90,6 +109,32 @@ namespace OwenLauncher.Applications
             {
                 File.Delete(tempFile);
             }
+        }
+    }
+
+    internal class UpdateFromFtp : IUpdateApplicationService
+    {
+        private readonly FtpDownloader _downloader = new FtpDownloader();
+
+        public async Task<(bool canUpdate, Version newVersion)> CanUpdateApplication(string url, Version currentVersion)
+        {
+            var baseUrl = new Uri(url);
+            var updateConfig = await _downloader.GetFileStringFromFtp(new Uri(baseUrl, "config.cfg"));
+
+            var versionMatch = Regex.Match(updateConfig, @"Version: ([^\s]+)");
+            if (!versionMatch.Success)
+            {
+                return (false, new Version());
+            }
+
+            var version = versionMatch.Groups[1].ToString();
+            var isVersionParsed = Version.TryParse(version, out var serverVersion);
+            if (!isVersionParsed)
+            {
+                return (false, new Version());
+            }
+
+            return (currentVersion < serverVersion, serverVersion);
         }
     }
 }

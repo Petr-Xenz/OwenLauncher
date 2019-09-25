@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
 using OwenLauncher.Applications;
@@ -16,6 +17,12 @@ namespace OwenLauncher
         {
             _model = model;
             LocatedApplications = new ObservableCollection<ApplicationViewModel>(model.Applications.Select(ApplicationViewModel.Create));
+        }
+
+        public Task CheckAppsForUpdate()
+        {
+            var tasks = LocatedApplications.Where(a => a.IsInstalled).Select(a => a.CheckForUpdate());
+            return Task.WhenAll(tasks);
         }
 
         public static MainWindowViewModel Create(MainModel model)

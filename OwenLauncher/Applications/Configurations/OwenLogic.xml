@@ -10,4 +10,5 @@
   <InstallUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/NewRelease/</InstallUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/softupdate/OWEN%20Logic/infoOfVersion.html</HistoryUrl>
   <InstallServiceType>InstallFromFtp</InstallServiceType>
+  <UpdateServiceType>UpdateFromFtp</UpdateServiceType>
 </ApplicationConfiguration>

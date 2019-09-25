@@ -23,8 +23,9 @@ namespace OwenLauncher.Applications
             }
 
             var installService = GetInstallService(configuration.InstallServiceType);
+            var updateService = GetUpdateService(configuration.UpdateServiceType);
 
-            return new ApplicationModel(configuration.UserName, configuration.InstallData, image, configuration.InstallUrl, configuration.HistoryUrl ?? "", installService);
+            return new ApplicationModel(configuration.UserName, configuration.InstallData, image, configuration.InstallUrl, configuration.HistoryUrl ?? "", installService, updateService);
         }
 
         private static IInstallApplicationService GetInstallService(string serviceName)
@@ -32,7 +33,7 @@ namespace OwenLauncher.Applications
             if (string.IsNullOrWhiteSpace(serviceName))
                 return null;
 
-            switch(serviceName.ToLower())
+            switch (serviceName.ToLower())
             {
                 case "installfromftp":
                     return new InstallFromFtp();
@@ -40,6 +41,20 @@ namespace OwenLauncher.Applications
                     return new InstallFromSite();
                 default:
                     return null;
+            }
+        }
+
+        private static IUpdateApplicationService GetUpdateService(string serviceName)
+        {
+            if (string.IsNullOrWhiteSpace(serviceName))
+                return new NoUpdateService();
+
+            switch (serviceName.ToLower())
+            {
+                case "updatefromftp":
+                    return new UpdateFromFtp();
+                default:
+                    return new NoUpdateService();
             }
         }
     }

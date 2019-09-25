@@ -10,4 +10,5 @@
   <InstallUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/NewRelease/</InstallUrl>
   <HistoryUrl>http://ftp-ow.owen.ru/OwenOPCServer/Updates/FullUpdateHistory.html</HistoryUrl>
   <InstallServiceType>InstallFromFtp</InstallServiceType>
+  <UpdateServiceType>UpdateFromFtp</UpdateServiceType>
 </ApplicationConfiguration>
