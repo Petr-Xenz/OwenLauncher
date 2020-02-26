@@ -127,11 +127,16 @@ namespace OwenLauncher.Applications
                 return (false, new Version());
             }
 
-            var version = versionMatch.Groups[1].ToString();
+            var version = versionMatch.Groups[1].Value;
             var isVersionParsed = Version.TryParse(version, out var serverVersion);
             if (!isVersionParsed)
             {
                 return (false, new Version());
+            }
+
+            if (currentVersion.Revision == -1 && serverVersion.Revision == 0)
+            {
+                currentVersion = new Version(currentVersion.Major, currentVersion.Minor, currentVersion.Build, 0);
             }
 
             return (currentVersion < serverVersion, serverVersion);
